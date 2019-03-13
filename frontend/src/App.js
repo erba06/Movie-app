@@ -25,7 +25,7 @@ class App extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h3 class="panel-title"><i class="fas fa-film" />
               MOVIE LIST
             </h3>
           </div>

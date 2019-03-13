@@ -41,7 +41,7 @@ class Edit extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h3 class="panel-title"><i class="fas fa-film" />
               EDIT Movie
             </h3>
           </div>
@@ -68,7 +68,7 @@ class Edit extends Component {
                 <label for="description">Director:</label>
                 <input type="text" class="form-control" name="director" value={this.state.movie.director} onChange={this.onChange} placeholder="Director" />
               </div>
-              <button type="submit" class="btn btn-default">Update</button>
+              <button type="submit" class="btn btn-success">Update</button>
             </form>
           </div>
         </div>

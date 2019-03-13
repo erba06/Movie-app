@@ -38,7 +38,7 @@ class Create extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title">
+            <h3 class="panel-title"><i class="fas fa-film" />
               ADD MOVIE
             </h3>
           </div>
@@ -47,23 +47,23 @@ class Create extends Component {
             </span> Movie List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
-                <label for="isbn">Title:</label>
+                <label for="title">Title:</label>
                 <input type="text" class="form-control" name="title" value={title} onChange={this.onChange} placeholder="Title" />
               </div>
               <div class="form-group">
-                <label for="title">Type:</label>
+                <label for="type">Type:</label>
                 <input type="text" class="form-control" name="type" value={type} onChange={this.onChange} placeholder="Type" />
               </div>
               <div class="form-group">
-                <label for="author">Description:</label>
+                <label for="description">Description:</label>
                 <input type="text" class="form-control" name="description" value={description} onChange={this.onChange} placeholder="Description" />
               </div>
               <div class="form-group">
-                <label for="published_date">Actors:</label>
+                <label for="actors">Actors:</label>
                 <input type="text" class="form-control" name="actors" value={actors} onChange={this.onChange} placeholder="Actors" />
               </div>
               <div class="form-group">
-                <label for="publisher">Director:</label>
+                <label for="director">Director:</label>
                 <input type="text" class="form-control" name="director" value={director} onChange={this.onChange} placeholder="Director" />
               </div>
               <button type="submit" class="btn btn-default">Submit</button>
