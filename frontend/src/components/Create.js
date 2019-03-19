@@ -38,13 +38,14 @@ class Create extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fas fa-film" />
-              ADD MOVIE
-            </h3>
+          <header class="panel-title"><i class="fas fa-film" />
+            <span>Add Movie</span>
+            <Link to="/"><span>Movie List</span></Link>
+          </header>
           </div>
           <div class="panel-body">
             <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true">
-            </span> Movie List</Link></h4>
+            </span><i class="fas fa-video"></i> Movie List</Link></h4>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="title">Title:</label>
@@ -66,7 +67,7 @@ class Create extends Component {
                 <label for="director">Director:</label>
                 <input type="text" class="form-control" name="director" value={director} onChange={this.onChange} placeholder="Director" />
               </div>
-              <button type="submit" class="btn btn-default">Submit</button>
+              <button type="submit" class="btn btn-success">Submit</button>
             </form>
           </div>
         </div>

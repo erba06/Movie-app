@@ -41,9 +41,11 @@ class Edit extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fas fa-film" />
-              EDIT Movie
-            </h3>
+          <header class="panel-title"><i class="fas fa-film" />
+            <span>Edit movie</span>
+            <Link to="/"><span>Movie List</span></Link>
+            <Link to="/create"><span>Add Movie</span></Link>
+          </header>
           </div>
           <div class="panel-body">
             <h4><Link to={`/show/${this.state.movie.id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Movie List</Link></h4>

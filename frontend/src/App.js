@@ -25,12 +25,13 @@ class App extends Component {
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><i class="fas fa-film" />
-              MOVIE LIST
-            </h3>
+            <header class="panel-title"><i class="fas fa-film" />
+              <span>Movie List</span>
+              <Link to="/create"><span>Add Movie</span></Link>
+            </header>
           </div>
           <div class="panel-body">
-            <h4><Link to="/create"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Add Movie</Link></h4>
+            <h4><Link to="/create"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><i class="fas fa-video"></i> Add Movie</Link></h4>
             <table class="table table-stripe">
               <thead>
                 <tr>
