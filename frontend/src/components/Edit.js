@@ -45,10 +45,11 @@ class Edit extends Component {
             <span>Edit movie</span>
             <Link to="/"><span>Movie List</span></Link>
             <Link to="/create"><span>Add Movie</span></Link>
+            <i class="fas fa-video" />
           </header>
           </div>
           <div class="panel-body">
-            <h4><Link to={`/show/${this.state.movie.id}`}><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span> Movie List</Link></h4>
+          <div className='title'><div className='title-text'>Edit the movie details</div></div>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="name">Title:</label>

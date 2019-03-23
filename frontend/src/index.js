@@ -7,7 +7,6 @@ import './App.css';
 import Edit from './components/Edit';
 import Create from './components/Create';
 import Show from './components/Show';
-import Delete from './components/Delete';
 
 
 ReactDOM.render(
@@ -17,7 +16,6 @@ ReactDOM.render(
         <Route path='/edit/:id' component={Edit} />
         <Route path='/create' component={Create} />
         <Route path='/show/:id' component={Show} />
-        <Route path='/delete/:id' component={Delete} />
 
       </div>
   </Router>,

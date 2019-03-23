@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 class Create extends Component {
 
@@ -12,8 +12,16 @@ class Create extends Component {
       type: '',
       description: '',
       actors: '',
-      director: ''
+      director: '',
+      posts: [],
     };
+  }
+
+  selectMovie(post) {
+    console.log(post)
+    this.setState({title: post.title})
+    this.setState({director: post.image})
+    this.setState({description: post.description})
   }
   onChange = (e) => {
     const state = this.state
@@ -31,21 +39,53 @@ class Create extends Component {
         this.props.history.push("/")
       });
   }
+  componentDidMount() {
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=d2830f0b0600b930c426e3cd4fa4dc5a&language=en-US&`)
+      .then(res => {
+        console.log(res)
+        const posts = res.data.results.map(obj => ({ title: obj.title, description: obj.overview, image: obj.poster_path }));
+        this.setState({ posts });
+      });
+  }
 
   render() {
-    const { title, type, description, actors, director } = this.state;
+    const { title, type, description, actors, director, image } = this.state;
+
     return (
       <div class="container">
         <div class="panel panel-default">
           <div class="panel-heading">
-          <header class="panel-title"><i class="fas fa-film" />
-            <span>Add Movie</span>
-            <Link to="/"><span>Movie List</span></Link>
-          </header>
+            <header class="panel-title"><i class="fas fa-film" />
+              <span>Add Movie</span>
+              <Link to="/"><span>Movie List</span></Link>
+              <i class="fas fa-video" />
+            </header>
           </div>
           <div class="panel-body">
-            <h4><Link to="/"><span class="glyphicon glyphicon-th-list" aria-hidden="true">
-            </span><i class="fas fa-video"></i> Movie List</Link></h4>
+            <div className='title'><div className='title-text'>Add a movie</div></div>
+            <div className='select-movie'>
+              <ul>
+                {this.state.posts.map(post =>
+                  
+                  <div class="media">
+                  <a href="#" class="pull-left">
+                    <img src={`https://image.tmdb.org/t/p/w185${post.image}`} class="media-object" alt="Sample Image" />
+                  </a>
+                  <div class="media-body">
+                    <h3 class="media-heading">{post.title}</h3>
+                    <h6>{post.description}</h6>
+                    
+                    <Button onClick={() => this.selectMovie(post)} variant="danger" >Select</Button>
+                  </div>
+                </div>
+                
+                )}
+              </ul>
+            </div> 
+
+           
+
+            <div className='title'><div className='title-text'>Add a movie</div></div>
             <form onSubmit={this.onSubmit}>
               <div class="form-group">
                 <label for="title">Title:</label>

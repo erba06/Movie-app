@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,6 +9,7 @@ class App extends Component {
     this.state = {
       movies: []
     };
+    console.log(props)
   }
 
   componentDidMount() {
@@ -28,10 +28,11 @@ class App extends Component {
             <header class="panel-title"><i class="fas fa-film" />
               <span>Movie List</span>
               <Link to="/create"><span>Add Movie</span></Link>
+              <i class="fas fa-video" />
             </header>
           </div>
           <div class="panel-body">
-            <h4><Link to="/create"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span><i class="fas fa-video"></i> Add Movie</Link></h4>
+            <div className='title'><div className='title-text'>My list of movies</div></div>
             <table class="table table-stripe">
               <thead>
                 <tr>

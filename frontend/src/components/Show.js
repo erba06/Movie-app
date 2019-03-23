@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { Card, Button } from 'react-bootstrap';
 import './front.css'
 let pic = require('../pic/le-parrain.jpg')
 
@@ -9,11 +10,13 @@ class Show extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: {}
+      movie: {},
+      posts: []
     };
   }
 
   componentDidMount() {
+
     axios.get('/movies/' + this.props.match.params.id)
       .then(res => {
         this.setState({ movie: res.data });
@@ -38,32 +41,34 @@ class Show extends Component {
             <header class="panel-title"><i class="fas fa-film" />
               <Link to="/"><span>Movie List</span></Link>
               <Link to="/create"><span>Add Movie</span></Link>
+              <i class="fas fa-video" />
             </header>
           </div>
 
-            <div class="panel-body">
-              <h4><Link to="/">
-                <i class="fas fa-video">Movie List</i></Link></h4>
-              <dl>
-                <img src={pic} />
-                <dt>Title:</dt>
-                <dd>{this.state.movie.title}</dd>
-                <dt>Type:</dt>
-                <dd>{this.state.movie.type}</dd>
-                <dt>Description:</dt>
-                <dd>{this.state.movie.description}</dd>
-                <dt>Actors:</dt>
-                <dd>{this.state.movie.actors}</dd>
-                <dt>Director:</dt>
-                <dd>{this.state.movie.director}</dd>
-              </dl>
-              <Link to={`/edit/${this.state.movie.id}`} class="btn btn-success">Edit</Link>&nbsp;
-            <button onClick={this.delete.bind(this, this.state.movie.id)} class="btn btn-danger">Delete</button>
+          <div class="panel-body">
+            <div className='title'><div className='title-text'>Movie details</div></div>
+
+            <div className='card-container'>
+              <Card bg="info" text="white">
+                <Card.Img variant="top" src="https://picsum.photos/100/160/?random" />
+                <Card.Body>
+                  <Card.Title>{this.state.movie.title}</Card.Title>
+                  <Card.Subtitle><em>Genre:</em> {this.state.movie.type}</Card.Subtitle>
+                  <Card.Text>
+                    {this.state.movie.description}
+                  </Card.Text>
+                  <Card.Text><em>With:</em> {this.state.movie.actors}</Card.Text>
+                  <Card.Text><em>From:</em> {this.state.movie.director}</Card.Text>
+                  <Link to={`/edit/${this.state.movie.id}`} class="btn btn-success">Edit</Link>&nbsp;
+                  <Button variant="danger" onClick={this.delete.bind(this, this.state.movie.id)}>Delete</Button>
+                </Card.Body>
+              </Card>
             </div>
           </div>
         </div>
-        );
-      }
-    }
-    
+      </div>
+    );
+  }
+}
+
 export default Show;
