@@ -12,6 +12,7 @@ class App extends Component {
     console.log(props)
   }
 
+  
   componentDidMount() {
     axios.get('/movies')
       .then(res => {
@@ -37,7 +38,8 @@ class App extends Component {
               <thead>
                 <tr>
                   <th>Title</th>
-                  <th>Type</th>
+                  <th>Release date</th>
+                  <th>Vote</th>
                 </tr>
               </thead>
               <tbody>
@@ -45,6 +47,7 @@ class App extends Component {
                   <tr>
                     <td><Link to={`/show/${c.id}`}>{c.title}</Link></td>
                     <td>{c.type}</td>
+                    <td>{c.director}</td>
                   </tr>
                 )}
               </tbody>

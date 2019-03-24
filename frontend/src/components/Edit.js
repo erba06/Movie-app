@@ -56,7 +56,7 @@ class Edit extends Component {
                 <input type="text" class="form-control" name="title" value={this.state.movie.title} onChange={this.onChange} placeholder="Title" />
               </div>
               <div class="form-group">
-                <label for="title">Type:</label>
+                <label for="title">Release date:</label>
                 <input type="text" class="form-control" name="type" value={this.state.movie.type} onChange={this.onChange} placeholder="Type" />
               </div>
               <div class="form-group">
@@ -64,11 +64,11 @@ class Edit extends Component {
                 <input type="text" class="form-control" name="description" value={this.state.movie.description} onChange={this.onChange} placeholder="Description" />
               </div>
               <div class="form-group">
-                <label for="published_date">Actors:</label>
+                <label for="published_date">Image path:</label>
                 <input type="text" class="form-control" name="actors" value={this.state.movie.actors} onChange={this.onChange} placeholder="Actors" />
               </div>
               <div class="form-group">
-                <label for="description">Director:</label>
+                <label for="description">Vote:</label>
                 <input type="text" class="form-control" name="director" value={this.state.movie.director} onChange={this.onChange} placeholder="Director" />
               </div>
               <button type="submit" class="btn btn-success">Update</button>
