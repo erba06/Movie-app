@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-import { Card, Button, Badge } from 'react-bootstrap';
+import { Card, Button } from 'react-bootstrap';
 import './front.css'
 let pic = require('../pic/le-parrain.jpg')
 
@@ -11,7 +11,8 @@ class Show extends Component {
     super(props);
     this.state = {
       movie: {},
-      posts: []
+      posts: [],
+      image: {}
     };
   }
 
@@ -50,14 +51,14 @@ class Show extends Component {
 
             <div className='card-container'>
               <Card bg="info" text="white">
-                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w185${this.state.movie.actors}`} className="media-object" alt="Sample Image" />
+                <Card.Img variant="top" src={`https://image.tmdb.org/t/p/w185${this.state.movie.image}`} className="media-object" alt="Sample Image" />
                 <Card.Body>
                   <Card.Title>{this.state.movie.title}</Card.Title>
                   <Card.Subtitle><em>Date release:</em> {this.state.movie.type}</Card.Subtitle>
                   <Card.Text>
                     {this.state.movie.description}
                   </Card.Text>
-                  <Card.Text><em>Vote:</em><span class="badge badge-success">{this.state.movie.director}</span></Card.Text>
+                  <Card.Text><em>Vote:</em><span class="badge badge-success">{this.state.movie.vote}</span></Card.Text>
                   <Link to={`/edit/${this.state.movie.id}`} class="btn btn-success">Edit</Link>&nbsp;
                   <Button variant="danger" onClick={this.delete.bind(this, this.state.movie.id)}>Delete</Button>
                 </Card.Body>

@@ -12,8 +12,8 @@ class Create extends Component {
       type: '',
       vote: '',
       description: '',
-      actors: '',
-      director: '',
+      image: '',
+      vote: '',
       posts: [],
     };
   }
@@ -22,8 +22,8 @@ class Create extends Component {
     console.log(post)
     this.setState({ title: post.title })
     this.setState({ type: post.date })
-    this.setState({ director: post.vote })
-    this.setState({ actors: post.image })
+    this.setState({ vote: post.vote })
+    this.setState({ image: post.image })
     this.setState({ description: post.description })
   }
   onChange = (e) => {
@@ -35,9 +35,9 @@ class Create extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, type, description, actors, director } = this.state;
+    const { title, type, description, image, vote } = this.state;
 
-    axios.post('/movies', { title, type, description, actors, director })
+    axios.post('/movies', { title, type, description, image, vote })
       .then((result) => {
         this.props.history.push("/")
       });
@@ -52,7 +52,7 @@ class Create extends Component {
   }
 
   render() {
-    const { title, type, description, actors, director } = this.state;
+    const { title, type, description, image, vote } = this.state;
 
     return (
       <div class="container">
@@ -98,19 +98,19 @@ class Create extends Component {
                   </div>
                   <div class="form-group">
                     <label for="type">Release date:</label>
-                    <input type="text" class="form-control" name="type" value={type} onChange={this.onChange} placeholder="Type" />
+                    <input type="text" class="form-control" name="type" value={type} onChange={this.onChange} placeholder="Release" />
                   </div>
                   <div class="form-group">
                     <label for="description">Description:</label>
                     <input type="text" class="form-control" name="description" value={description} onChange={this.onChange} placeholder="Description" />
                   </div>
                   <div class="form-group">
-                    <label for="actors">Picture path:</label>
-                    <input type="text" class="form-control" name="actors" value={actors} onChange={this.onChange} placeholder="Actors" />
+                    <label for="image">Picture path:</label>
+                    <input type="text" class="form-control" name="image" value={image} onChange={this.onChange} placeholder="Actors" />
                   </div>
                   <div class="form-group">
-                    <label for="director">Vote:</label>
-                    <input type="text" class="form-control" name="director" value={director} onChange={this.onChange} placeholder="Director" />
+                    <label for="vote">Vote:</label>
+                    <input type="text" class="form-control" name="vote" value={vote} onChange={this.onChange} placeholder="Vote" />
                   </div>
                   <button type="submit" class="btn btn-success">Submit</button>
                 </form>

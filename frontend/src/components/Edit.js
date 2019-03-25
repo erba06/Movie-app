@@ -28,9 +28,9 @@ class Edit extends Component {
   onSubmit = (e) => {
     e.preventDefault();
 
-    const { title, type, description, actors, director } = this.state.movie;
+    const { title, type, description, image, vote } = this.state.movie;
 
-    axios.put('/movies/'+this.props.match.params.id, { title, type, description, actors, director })
+    axios.put('/movies/'+this.props.match.params.id, { title, type, description, image, vote })
       .then((result) => {
         this.props.history.push("/show/"+this.props.match.params.id)
       });
@@ -65,11 +65,11 @@ class Edit extends Component {
               </div>
               <div class="form-group">
                 <label for="published_date">Image path:</label>
-                <input type="text" class="form-control" name="actors" value={this.state.movie.actors} onChange={this.onChange} placeholder="Actors" />
+                <input type="text" class="form-control" name="image" value={this.state.movie.image} onChange={this.onChange} placeholder="Actors" />
               </div>
               <div class="form-group">
                 <label for="description">Vote:</label>
-                <input type="text" class="form-control" name="director" value={this.state.movie.director} onChange={this.onChange} placeholder="Director" />
+                <input type="text" class="form-control" name="vote" value={this.state.movie.vote} onChange={this.onChange} placeholder="Director" />
               </div>
               <button type="submit" class="btn btn-success">Update</button>
             </form>

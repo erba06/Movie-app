@@ -47,7 +47,7 @@ class App extends Component {
                   <tr>
                     <td><Link to={`/show/${c.id}`}>{c.title}</Link></td>
                     <td>{c.type}</td>
-                    <td>{c.director}</td>
+                    <td>{c.vote}</td>
                   </tr>
                 )}
               </tbody>

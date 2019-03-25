@@ -43,10 +43,10 @@ public class MovieController {
             c.setType(movie.getType());
         if(movie.getDescription() != null)
             c.setDescription(movie.getDescription());
-        if(movie.getActors() != null)
-            c.setActors(movie.getActors());
-        if(movie.getDirector() != null)
-            c.setDirector(movie.getDirector());
+        if(movie.getImage() != null)
+            c.setImage(movie.getImage());
+        if(movie.getVote() != null)
+            c.setVote(movie.getVote());
         movieRepository.save(c);
         return c;
     }

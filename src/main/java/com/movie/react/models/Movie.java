@@ -10,18 +10,18 @@ public class Movie {
     String title;
     String type;
     String description;
-    String actors;
-    String director;
+    String image;
+    String vote;
 
     public Movie() {
     }
 
-    public Movie(String title, String type, String description, String actors, String director) {
+    public Movie(String title, String type, String description, String image, String vote) {
         this.title = title;
         this.type = type;
         this.description = description;
-        this.actors = actors;
-        this.director = director;
+        this.image = image;
+        this.vote = vote;
     }
 
     public String getId() {
@@ -56,19 +56,19 @@ public class Movie {
         this.description = description;
     }
 
-    public String getActors() {
-        return actors;
+    public String getImage() {
+        return image;
     }
 
-    public void setActors(String actors) {
-        this.actors = actors;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public String getDirector() {
-        return director;
+    public String getVote() {
+        return vote;
     }
 
-    public void setDirector(String director) {
-        this.director = director;
+    public void setVote(String vote) {
+        this.vote = vote;
     }
 }
