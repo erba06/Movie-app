@@ -8,6 +8,5 @@ cd react
 Issue the following command to start mongod:
 sudo service mongod start
 
-Type this command from the terminal to  To run the Spring Boot:
-cd react
-./gradlew bootRun
+Type this command to build the React.js application and deploy to Spring Boot 2.0.0 application.
+npm run build
