@@ -11,7 +11,6 @@ class App extends Component {
     };
     console.log(props)
   }
-
   
   componentDidMount() {
     axios.get('/movies')

@@ -15,16 +15,17 @@ class Create extends Component {
       image: '',
       vote: '',
       posts: [],
+      pageNumber: 0,
     };
   }
 
   selectMovie(post) {
     console.log(post)
     this.setState({ title: post.title })
-    this.setState({ type: post.date })
-    this.setState({ vote: post.vote })
-    this.setState({ image: post.image })
-    this.setState({ description: post.description })
+    this.setState({ type: post.release_date })
+    this.setState({ vote: post.vote_average })
+    this.setState({ image: post.poster_path })
+    this.setState({ description: post.overview })
   }
   onChange = (e) => {
     const state = this.state
@@ -42,16 +43,29 @@ class Create extends Component {
         this.props.history.push("/")
       });
   }
-  componentDidMount() {
-    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=d2830f0b0600b930c426e3cd4fa4dc5a&language=en-US&`)
-      .then(res => {
-        console.log(res)
-        const posts = res.data.results.map(obj => ({ title: obj.title, description: obj.overview, image: obj.poster_path, date: obj.release_date, vote: obj.vote_average }));
-        this.setState({ posts });
+  showNextResults = () => {
+    const nextPageNumber = this.state.pageNumber + 1
+    axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=d2830f0b0600b930c426e3cd4fa4dc5a&language=en-US&page=${nextPageNumber}&_limit=15`)
+      //.then(res => console.log(res))
+      .then(nextPosts => {
+
+        console.log(nextPosts)
+        this.setState({
+          posts: [...this.state.posts, ...nextPosts.data.results],
+          pageNumber: nextPageNumber
+        });
+
       });
   }
 
+
+  componentDidMount() {
+    this.showNextResults()
+  }
+
+
   render() {
+    console.log(this.state)
     const { title, type, description, image, vote } = this.state;
 
     return (
@@ -70,25 +84,23 @@ class Create extends Component {
               <div className='select-movie'>
                 <ul>
                   {this.state.posts.map(post =>
-
                     <div class="media">
                       <a href="#" class="pull-left">
-                        <img src={`https://image.tmdb.org/t/p/w185${post.image}`} class="media-object" alt="Sample Image" />
+                        <img src={`https://image.tmdb.org/t/p/w185${post.poster_path}`} class="media-object" alt="Sample Image" />
                       </a>
                       <div class="media-body">
                         <h3 class="media-heading">{post.title}</h3>
                         <h6>{post.date}</h6>
-                        {/*<h6>{post.description}</h6>*/}
-                        <h6><span class="badge badge-success">{post.vote}</span></h6>
-                        <Button onClick={() => this.selectMovie(post)} variant="danger" >Select</Button>
+                        <h6>{post.overview}</h6>
+                        <h6><span class="badge badge-success">{post.vote_average}</span></h6>
+                        <Button className='centered-button' onClick={() => this.selectMovie(post)} variant="danger" >Select</Button>
                       </div>
                     </div>
 
                   )}
                 </ul>
+                <Button className='centered-button' onClick={this.showNextResults}>Load more</Button>
               </div>
-
-
 
               <div className='form-container'>
                 <form onSubmit={this.onSubmit}>
